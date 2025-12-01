@@ -1,4 +1,4 @@
-# README: Sistema de Gestión Web PHP (Inventario/E-commerce)
+# README: Sistema de Gestión Web PHP 
 
 Este documento contiene las instrucciones necesarias para instalar y ejecutar el proyecto de gestión web construido en PHP y MySQL.
 
@@ -45,3 +45,32 @@ Este documento contiene las instrucciones necesarias para instalar y ejecutar el
     * Accede a: http://localhost/[nombre_carpeta]/registro_usuario.php
     * Crea tu usuario y contraseña.
 4.  Una vez registrado, inicia sesión para acceder al panel principal (`main.php`).
+
+   ## ☁️ Instrucciones de Subida a InfinityFree (Hosting)
+
+Si deseas subir el proyecto a InfinityFree (o un servicio similar), los siguientes pasos son **OBLIGATORIOS** para actualizar la conexión.
+
+### Paso A: Subida de Base de Datos
+
+1.  Accede al Panel de Control de InfinityFree y encuentra la sección **MySQL Databases**.
+2.  Crea una nueva base de datos. InfinityFree te asignará un **Host**, **Nombre de BD**, **Usuario** y **Contraseña** específicos (que no son `localhost`/`root`).
+3.  Accede a **phpMyAdmin** desde el Panel de InfinityFree.
+4.  Selecciona la base de datos recién creada y **Importa el archivo `if0_40466430_doncloro.sql`**.
+
+### Paso B: Actualización de la Conexión PHP (Hosting)
+
+1.  Abre el archivo de conexión a la base de datos (`conexion.php`).
+2.  **¡Es vital reemplazar las variables locales por las de InfinityFree!**
+
+    ```php
+    // CONFIGURACIÓN PARA HOSTING (EJEMPLO DE INFINITYFREE)
+    $host = "sqlxxx.epizy.com"; // Tu Host SQL Único
+    $user = "if0_40466430";     // Tu Usuario de Base de Datos Único
+    $pass = "TuContraseñaSQL";  // La contraseña que te asignó el hosting
+    $db = "if0_40466430_doncloro"; // El Nombre de la BD Único
+    ```
+3.  Sube todos los archivos de tu proyecto (incluyendo la carpeta `img` y los archivos PHP actualizados) al directorio **`htdocs`** de tu cuenta de hosting.
+
+### Paso C: Acceso Final
+
+Accede a tu dominio (`http://[TuDominio].com/`) para verificar que el sitio esté funcionando correctamente.
